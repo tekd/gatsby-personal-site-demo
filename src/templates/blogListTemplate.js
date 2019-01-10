@@ -4,8 +4,17 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import Img from 'gatsby-image';
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
+  const { currentPage, numPages } = pageContext;
+  const pathPrefix = 'blog';
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage =
+    currentPage - 1 === 1
+      ? `${pathPrefix}/`
+      : `${pathPrefix}/${(currentPage - 1).toString()}`;
+  const nextPage = `${pathPrefix}/${(currentPage + 1).toString()}`;
   return (
     <Layout>
       <div className="post-list">
@@ -38,6 +47,28 @@ const BlogPage = ({ data }) => {
           </div>
         ))}
       </div>
+      <div className="page-navigation">
+        {!isFirst && (
+          <Link to={prevPage} rel="prev">
+            ← Previous Page
+          </Link>
+        )}
+
+        {Array.from({ length: numPages }, (_, i) => (
+          <Link
+            key={`pagination-number${i + 1}`}
+            to={`${pathPrefix}/${i === 0 ? '' : i + 1}`}
+          >
+            {i + 1}
+          </Link>
+        ))}
+
+        {!isLast && (
+          <Link to={nextPage} rel="next">
+            Next Page →
+          </Link>
+        )}
+      </div>
     </Layout>
   );
 };
@@ -46,8 +77,12 @@ export default BlogPage;
 
 // Get all markdown files, in descending order by date, and grab the id, excerpt, slug, date, and title
 export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+  query($skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       edges {
         node {
           id
