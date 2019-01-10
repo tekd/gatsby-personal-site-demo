@@ -5,3 +5,5 @@ thumbnail: "../../images/kitten-1.jpeg"
 ---
 
 This is my first blog post. Hello World!
+
+![Kitten One](../../images/kitten-1.jpeg)
