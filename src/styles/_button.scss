@@ -1,0 +1,12 @@
+.button {
+  background-color: rgba(rebeccapurple, 0.7);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 1rem;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: rgba(rebeccapurple, 0.9);
+  }
+}
