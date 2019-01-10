@@ -32,6 +32,7 @@ module.exports = {
               maxWidth: 600,
             },
           },
+          `gatsby-remark-prismjs`,
         ],
       },
     },

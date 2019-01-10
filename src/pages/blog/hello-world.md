@@ -8,3 +8,7 @@ tags: ['cat', 'kitten', 'javascript']
 This is my first blog post. Hello World!
 
 ![Kitten One](../../images/kitten-1.jpeg)
+
+```javascript
+console.log('hi')
+```
