@@ -7,6 +7,9 @@ header {
   padding: 1rem 4rem;
   a {
     text-decoration: none;
+    &:active {
+      color: rebeccapurple;
+    }
   }
   nav {
     align-self: center;
