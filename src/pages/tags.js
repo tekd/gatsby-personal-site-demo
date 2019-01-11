@@ -4,11 +4,14 @@ import { Link, graphql } from 'gatsby';
 import { kebabCase } from 'lodash';
 
 import Layout from '../components/layout';
+import SEO from '../components/seo';
+
 const TagsPage = ({ data }) => {
   const allTags = data.allMarkdownRemark.group;
 
   return (
     <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div>
         <h1>Tags</h1>
         <ul>

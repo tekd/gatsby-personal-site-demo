@@ -3,6 +3,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import Img from 'gatsby-image';
+import SEO from '../components/seo';
 
 const BlogPage = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -17,6 +18,7 @@ const BlogPage = ({ data, pageContext }) => {
   const nextPage = `${pathPrefix}/${(currentPage + 1).toString()}`;
   return (
     <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="post-list">
         {posts.map(post => (
           <div key={post.node.id} className="post-list__item">

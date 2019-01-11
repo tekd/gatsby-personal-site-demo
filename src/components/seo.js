@@ -1,7 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
+
+import seoImage from '../images/kitten-1.jpeg';
 
 function SEO({ description, lang, meta, keywords, title }) {
   return (
@@ -9,7 +11,8 @@ function SEO({ description, lang, meta, keywords, title }) {
       query={detailsQuery}
       render={data => {
         const metaDescription =
-          description || data.site.siteMetadata.description
+          description || data.site.siteMetadata.description;
+        const baseUrl = data.site.siteMetadata.baseUrl;
         return (
           <Helmet
             htmlAttributes={{
@@ -50,6 +53,14 @@ function SEO({ description, lang, meta, keywords, title }) {
                 name: `twitter:description`,
                 content: metaDescription,
               },
+              {
+                property: 'og:image',
+                content: `${baseUrl}${seoImage}`,
+              },
+              {
+                name: 'twitter:image',
+                content: `${baseUrl}${seoImage}`,
+              },
             ]
               .concat(
                 keywords.length > 0
@@ -61,17 +72,17 @@ function SEO({ description, lang, meta, keywords, title }) {
               )
               .concat(meta)}
           />
-        )
+        );
       }}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -79,9 +90,9 @@ SEO.propTypes = {
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default SEO
+export default SEO;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
@@ -90,7 +101,8 @@ const detailsQuery = graphql`
         title
         description
         author
+        baseUrl
       }
     }
   }
-`
+`;
