@@ -43,8 +43,12 @@ const BlogPage = ({ data, pageContext }) => {
                 </div>
               ) : null}
               <p>{post.node.frontmatter.date}</p>
-              <div className="post-list__excerpt">{post.node.excerpt}</div>
-              <Link to={post.node.fields.slug}>Read More</Link>
+              <div className="post-list__excerpt">
+                <p>{post.node.excerpt}</p>
+              </div>
+              <Link className="button button--small" to={post.node.fields.slug}>
+                Read More
+              </Link>
             </div>
           </div>
         ))}

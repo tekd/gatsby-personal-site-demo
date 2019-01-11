@@ -16,7 +16,9 @@ body {
 }
 
 footer {
-  background-color: rebeccapurple;
-  color: white;
+  color: rebeccapurple;
+  a {
+    color: rebeccapurple;
+  }
   padding: 1rem 4rem;
 }

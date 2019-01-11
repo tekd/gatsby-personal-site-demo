@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+  padding: 1rem 4rem;
+  a {
+    text-decoration: none;
+  }
+  nav {
+    align-self: center;
+    a {
+      padding: 0 1rem;
+    }
+  }
+}

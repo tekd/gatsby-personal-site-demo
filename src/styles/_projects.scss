@@ -1,23 +1,22 @@
 .project-list {
   margin: 0;
-}
-.project-list__item {
-  display: flex;
-  flex-direction: column;
-  @media (min-width: 700px) {
-    flex-direction: row;
+  &__content {
+    padding: 1rem;
+    text-align: left;
   }
-  padding: 1rem;
-}
-.project-list__thumbnail {
-  width: 100%;
-  align-self: center;
-}
-
-.project-list__excerpt {
-  padding-bottom: 2rem;
-}
-.project-list__content {
-  padding: 1rem;
-  text-align: left;
+  &__excerpt {
+    padding-bottom: 2rem;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 800px) {
+      flex-direction: row;
+    }
+    padding: 1rem;
+  }
+  &__thumbnail {
+    align-self: center;
+    width: 100%;
+  }
 }

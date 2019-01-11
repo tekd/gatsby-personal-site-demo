@@ -4,9 +4,16 @@
   cursor: pointer;
   font-weight: 700;
   padding: 1rem;
+  text-decoration: none;
   text-transform: uppercase;
   transition: all 0.4s ease;
   &:hover {
     background-color: rgba(rebeccapurple, 0.9);
+  }
+  &--small {
+    padding: 0.5rem;
+    text-transform: none;
+    font-weight: 500;
+    background-color: rgba(rebeccapurple, 0.6);
   }
 }
